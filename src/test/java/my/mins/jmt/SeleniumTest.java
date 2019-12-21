@@ -27,7 +27,7 @@ public class SeleniumTest {
 	@Test
 	public void selenium_example() {
 		WebDriver driver = new ChromeDriver(); // 브라우저 실행
-		driver.get("https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin"); // 로그인 페이지로 이동 합니다.
+		driver.get("https://accounts.google.com/signin/v2/identifier"); // 로그인 페이지로 이동 합니다.
 		WebElement id = driver.findElement(By.id("id"));
 		id.clear();
 		id.sendKeys("msjeon529"); // 아이디 입력 필드에 '아이디'를 입력 합니다.
