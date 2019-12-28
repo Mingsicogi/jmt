@@ -1,11 +1,10 @@
-package my.mins.jmt.app.collect.service;
+package my.mins.jmt.app.food.service;
 
-import my.mins.jmt.app.collect.entity.Food;
+import my.mins.jmt.app.food.entity.Food;
 import my.mins.jmt.app.common.cd.FoodTypeCd;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,24 +15,25 @@ import java.util.List;
  *
  * @author minssogi
  */
-public abstract class AbstractCommonGetFoodInfoService {
+public abstract class AbstractCommonGetFoodInfoService implements GetFoodInfo {
 
 	protected Document callPage(String url) throws IOException {
 		return Jsoup.connect(url).get();
 	}
 
-	protected List<Food> getInfoListFromFoodHomePage(GetFoodInfo getFoodInfo, FoodTypeCd foodTypeCd, Elements elements) {
+	protected List<Food> getInfoListFromFoodHomePage(FoodTypeCd foodTypeCd, Elements elements) {
 
 		List<Food> foodInfoList = new ArrayList<>();
 
 		elements.forEach(element -> {
+
 			// set data into Food entity
 			Food food = new Food();
-			food.setStoreNm(getFoodInfo.getStoreNm(element));
+			food.setStoreNm(this.getStoreNm(element));
 			food.setTypeCd(foodTypeCd);
-			food.setFoodEx(getFoodInfo.getFoodEx(element));
-			food.setAvgPoint(getFoodInfo.getAvgPoint(element));
-			food.setStoreAddr(getFoodInfo.getStoreAddr(element));
+			food.setFoodEx(this.getFoodEx(element));
+			food.setAvgPoint(this.getAvgPoint(element));
+			food.setStoreAddr(this.getStoreAddr(element));
 
 			foodInfoList.add(food);
 

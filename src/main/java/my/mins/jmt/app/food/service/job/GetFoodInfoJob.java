@@ -1,6 +1,6 @@
-package my.mins.jmt.app.collect.service.job;
+package my.mins.jmt.app.food.service.job;
 
-import my.mins.jmt.app.collect.service.impl.DiningCodeFoodInfo;
+import my.mins.jmt.app.food.service.impl.DiningCodeFoodInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package my.mins.jmt.app.collect.entity;
+package my.mins.jmt.app.food.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +8,7 @@ import my.mins.jmt.app.common.cd.FoodTypeCd;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "food")
 @Getter
 @Setter
 @ToString

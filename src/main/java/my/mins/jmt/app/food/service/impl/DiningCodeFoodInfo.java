@@ -1,34 +1,46 @@
-package my.mins.jmt.app.collect.service.impl;
+package my.mins.jmt.app.food.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import my.mins.jmt.app.collect.entity.Food;
-import my.mins.jmt.app.collect.service.AbstractCommonGetFoodInfoService;
-import my.mins.jmt.app.collect.service.GetFoodInfo;
-import my.mins.jmt.app.collect.service.repository.FoodRepository;
+import my.mins.jmt.app.food.entity.Food;
+import my.mins.jmt.app.food.service.AbstractCommonGetFoodInfoService;
 import my.mins.jmt.app.common.cd.FoodTypeCd;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * 다이닝 코드를 크롤링해서 음식 정보를 가져오는 서비스 구현
+ *
+ * @author minssogi
+ */
 @Service
 @Slf4j
-public class DiningCodeFoodInfo extends AbstractCommonGetFoodInfoService implements GetFoodInfo {
-
-	@Resource
-	private FoodRepository foodRepository;
+public class DiningCodeFoodInfo extends AbstractCommonGetFoodInfoService {
 
 	private static String fromUrlForm = "https://www.diningcode.com/isearch.php?query=%s";
 
 	private static String queryParam = "%s %s맛집";
 
 	@Override
-	public List<Food> getFoodInfoList(FoodTypeCd foodTypeCd) {
-		return null;
+	public List<Food> getFoodInfoList(String location, FoodTypeCd foodTypeCd) throws IOException {
+
+		// make url
+		String url = String.format(fromUrlForm, String.format(queryParam, location, foodTypeCd.getKrNm()));
+
+		// get html page
+		Document document = super.callPage(url);
+
+		// get specific div
+		Element htmlElementFromSpecificDiv = this.getHtmlElementFromSpecificDiv(document);
+
+		// get food list element
+		Elements foodListElements = htmlElementFromSpecificDiv.getElementsByTag("li");
+
+		return super.getInfoListFromFoodHomePage(foodTypeCd, foodListElements);
 	}
 
 	@Override

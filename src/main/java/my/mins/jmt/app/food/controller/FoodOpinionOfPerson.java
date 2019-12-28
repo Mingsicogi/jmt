@@ -1,4 +1,4 @@
-package my.mins.jmt.app.collect.controller;
+package my.mins.jmt.app.food.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
