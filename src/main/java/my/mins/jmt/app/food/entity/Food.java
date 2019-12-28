@@ -19,8 +19,8 @@ public class Food {
 	private Long id;
 
 	@Enumerated
-	@Column(name = "type_cd")
-	private FoodTypeCd typeCd;
+	@Column(name = "food_type_cd")
+	private FoodTypeCd foodTypeCd;
 
 	@Column(name = "store_nm")
 	private String storeNm;
@@ -29,7 +29,7 @@ public class Food {
 	private String foodEx;
 
 	@Column(name = "avg_point")
-	private String avgPoint;
+	private Integer avgPoint;
 
 	@Column(name = "store_addr")
 	private String storeAddr;

@@ -1,6 +1,7 @@
 package my.mins.jmt.app.food.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import my.mins.jmt.app.common.cd.FoodInfoSiteTypeCd;
 import my.mins.jmt.app.food.entity.Food;
 import my.mins.jmt.app.food.service.AbstractCommonGetFoodInfoService;
 import my.mins.jmt.app.common.cd.FoodTypeCd;
@@ -21,15 +22,19 @@ import java.util.List;
 @Slf4j
 public class DiningCodeFoodInfo extends AbstractCommonGetFoodInfoService {
 
-	private static String fromUrlForm = "https://www.diningcode.com/isearch.php?query=%s";
-
-	private static String queryParam = "%s %s맛집";
-
+	/**
+	 * 다이닝 코드 음식정보 리스트 조회
+	 *
+	 * @param location
+	 * @param foodTypeCd
+	 * @return
+	 * @throws IOException
+	 */
 	@Override
 	public List<Food> getFoodInfoList(String location, FoodTypeCd foodTypeCd) throws IOException {
 
 		// make url
-		String url = String.format(fromUrlForm, String.format(queryParam, location, foodTypeCd.getKrNm()));
+		String url = FoodInfoSiteTypeCd.DINING_CODE.getSearchUrl(location, foodTypeCd);
 
 		// get html page
 		Document document = super.callPage(url);
@@ -50,7 +55,12 @@ public class DiningCodeFoodInfo extends AbstractCommonGetFoodInfoService {
 
 	@Override
 	public String getStoreNm(Element element) {
-		return element.getElementsByClass("btxt").text();
+		String storeNm = element.getElementsByClass("btxt").text();
+
+		// '1. 쉑쉑 버거' 이런식의 데이터가 파싱되기 때문에 데이터 정제가 필요함.
+		storeNm = storeNm.split(". ")[1];
+
+		return storeNm;
 	}
 
 	@Override
@@ -59,8 +69,12 @@ public class DiningCodeFoodInfo extends AbstractCommonGetFoodInfoService {
 	}
 
 	@Override
-	public String getAvgPoint(Element element) {
-		return element.getElementsByClass("point").text();
+	public Integer getAvgPoint(Element element) {
+
+		// '70점' 이런식의 데이터가 파싱되기 때문에 '점'을 제거함.
+		String pointStr = element.getElementsByClass("point").text().replace("점", "");
+
+		return Integer.parseInt(pointStr);
 	}
 
 	@Override

@@ -50,7 +50,7 @@ public interface GetFoodInfo {
 	 * @param element
 	 * @return
 	 */
-	String getAvgPoint(Element element);
+	Integer getAvgPoint(Element element);
 
 	/**
 	 * 주소(페이지 마다 tag가 다르니 Scrolling target 페이지에 맞춰 재구현 필요)
