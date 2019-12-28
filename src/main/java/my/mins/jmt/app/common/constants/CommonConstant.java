@@ -8,4 +8,6 @@ package my.mins.jmt.app.common.constants;
 public class CommonConstant {
 
 	public static final String SPACE = " ";
+
+	public static final String DASH = "-";
 }

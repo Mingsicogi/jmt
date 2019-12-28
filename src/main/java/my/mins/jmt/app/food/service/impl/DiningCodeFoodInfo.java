@@ -34,7 +34,7 @@ public class DiningCodeFoodInfo extends AbstractCommonGetFoodInfoService {
 	public List<Food> getFoodInfoList(String location, FoodTypeCd foodTypeCd) throws IOException {
 
 		// make url
-		String url = FoodInfoSiteTypeCd.DINING_CODE.getSearchUrl(location, foodTypeCd);
+		String url = FoodInfoSiteTypeCd.DINING_CODE.getGetSearchUrlFunction().apply(location, foodTypeCd);
 
 		// get html page
 		Document document = super.callPage(url);

@@ -22,12 +22,12 @@ public enum FoodInfoSiteTypeCd {
 
 	MANGO_PLATE("https://www.mangoplate.com",
 		"https://www.mangoplate.com/search/%s",
-		(location, foodType) -> String.format(FoodInfoSiteTypeCd.DINING_CODE.getSearchUrlForm(), location + CommonConstant.SPACE + foodType.name() + FoodConstant.GOOD_FOOD_STORE)
+		(location, foodType) -> String.format(FoodInfoSiteTypeCd.DINING_CODE.getSearchUrlForm(), location + CommonConstant.DASH + foodType.name())
 	),
 
 	TRIP_ADVISOR("",
 		"",
-		(location, foodType) -> String.format(FoodInfoSiteTypeCd.DINING_CODE.getSearchUrlForm(), location + CommonConstant.SPACE + foodType.name() + FoodConstant.GOOD_FOOD_STORE)
+		(location, foodType) -> location + foodType.getKrNm()
 	);
 
 	private String mainUrl;
