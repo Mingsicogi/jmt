@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -25,51 +26,33 @@ public class DiningCodeFoodInfo extends AbstractCommonGetFoodInfoService impleme
 
 	private static String queryParam = "%s %s맛집";
 
-	/**
-	 * 다이닝코드에서 음식 정보를 가져옴
-	 *
-	 * @param location
-	 * @param foodTypeCd
-	 * @return
-	 */
 	@Override
-	public Food getInfo(String location, FoodTypeCd foodTypeCd) {
+	public List<Food> getFoodInfoList(FoodTypeCd foodTypeCd) {
+		return null;
+	}
 
-		// make url
-		String url = String.format(fromUrlForm, String.format(queryParam, location, foodTypeCd.getKrNm()));
+	@Override
+	public Element getHtmlElementFromSpecificDiv(Document htmlPage) {
+		return htmlPage.getElementById("div_normal");
+	}
 
-		Food dbInfo = null;
-		try {
-			// curl get and return html code
-			Document htmlPage = callPage(url);
+	@Override
+	public String getStoreNm(Element element) {
+		return element.getElementsByClass("btxt").text();
+	}
 
-			// jsoup parsing
-			Element div_normal = htmlPage.getElementById("div_normal");
-			Elements liList = div_normal.getElementsByTag("li");
+	@Override
+	public String getFoodEx(Element element) {
+		return element.getElementsByClass("stxt").text();
+	}
 
-			for (Element element : liList) {
-				String storeNm = element.getElementsByClass("btxt").text();
-				String foodEx = element.getElementsByClass("stxt").text();
-				String storeAddr = element.getElementsByClass("ctxt").text();
-				String storePoint = element.getElementsByClass("point").text();
+	@Override
+	public String getAvgPoint(Element element) {
+		return element.getElementsByClass("point").text();
+	}
 
-				// set data into Food entity
-				Food food = new Food();
-				food.setStoreNm(storeNm);
-				food.setTypeCd(foodTypeCd);
-				food.setFoodEx(foodEx);
-				food.setAvgPoint(storePoint);
-				food.setStoreAddr(storeAddr);
-
-				dbInfo = foodRepository.save(food);
-
-				log.info("################## {}, {}, {}, {} \n", storeNm, foodEx, storeAddr, storePoint);
-			}
-
-		} catch (IOException e) {
-			log.error("ERROR Message : {}", e.getMessage(), e);
-		}
-
-		return dbInfo;
+	@Override
+	public String getStoreAddr(Element element) {
+		return element.getElementsByClass("ctxt").text();
 	}
 }
