@@ -10,4 +10,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SendLineMessage implements SendMessage {
+
+	@Override
+	public void send(String context) {
+
+	}
 }
