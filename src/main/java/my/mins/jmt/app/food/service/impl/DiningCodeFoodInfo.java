@@ -45,6 +45,8 @@ public class DiningCodeFoodInfo extends AbstractCommonGetFoodInfoService {
 		// get food list element
 		Elements foodListElements = htmlElementFromSpecificDiv.getElementsByTag("li");
 
+
+
 		return super.getInfoListFromFoodHomePage(foodTypeCd, foodListElements);
 	}
 
