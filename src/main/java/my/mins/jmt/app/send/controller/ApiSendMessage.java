@@ -6,19 +6,17 @@ import my.mins.jmt.app.send.service.impl.SendLineMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/api/send/message")
+@RestController
+@RequestMapping("/api/send/message")
 public class ApiSendMessage {
 
 	@Autowired
 	private SendLineMessage sendLineMessage;
 
 	@PostMapping("")
-	public ResponseEntity<String> sendMessage(ApiDTO.Req req) {
+	public ResponseEntity<String> sendMessage(@RequestBody ApiDTO.Req req) {
 
 		MessageDTO message = new MessageDTO();
 

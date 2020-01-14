@@ -24,12 +24,3 @@ spring:
       hibernate:
         format_sql: true
         use_sql_comments: true
-
-
-# line bot configuration
-line:
-  bot:
-    channel-token: 82sHmRUkzBRp1CDLVm0myFkQPBvI++vVPFe6+NaCR36eobstKP1G6PnbgdnkgUTZpHsLfI4XguXlUkKyg7lumljWt2W71vvpdyjGpGZhYO/T03PSUOvLSzzVAglTiVgQIooH8W5SUV5G32E0lkBvoAdB04t89/1O/w1cDnyilFU=
-    channel-secret: 216940cd574949830c45d9ba75e228aa
-    handler:
-      path: /noti/for/minsbot
