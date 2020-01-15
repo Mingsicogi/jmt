@@ -13,4 +13,9 @@ public class SystemCheck {
     public ResponseEntity<String> check(){
         return ResponseEntity.ok("OK");
     }
+
+    @GetMapping
+    public ResponseEntity<String> annotationCheck(String message) {
+        return ResponseEntity.ok(message);
+    }
 }
