@@ -26,4 +26,5 @@ public class ApiSendMessage {
 
 		return sendLineMessage.send(message) ? ResponseEntity.ok("Success") : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+
 }
