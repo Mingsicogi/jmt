@@ -16,9 +16,9 @@ public class LineBotChat {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
-    @Column(name = "group_id")
+    @Column(name = "group_id", unique = true)
     private String groupId;
 
     @Column(name = "join_ymdt")
