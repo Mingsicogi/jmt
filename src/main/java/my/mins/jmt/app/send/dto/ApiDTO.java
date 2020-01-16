@@ -12,7 +12,7 @@ public class ApiDTO {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Req {
-
+        private String to;
         private String message;
     }
 

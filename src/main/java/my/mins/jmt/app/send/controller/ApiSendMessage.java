@@ -21,7 +21,8 @@ public class ApiSendMessage {
 		MessageDTO message = new MessageDTO();
 
 		message.setMessages(req.getMessage());
-		message.setTo("Cc8132e37b4f6d7eb457858802d3d9f45");
+		message.setTo(req.getTo());
+//		message.setTo("Cc8132e37b4f6d7eb457858802d3d9f45");
 
 		return sendLineMessage.send(message) ? ResponseEntity.ok("Success") : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
