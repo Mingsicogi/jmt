@@ -12,4 +12,9 @@ public class MessageDTO {
     private String to;
     private String messages;
     private Boolean notificationDisabled;
+
+    public MessageDTO(String to, String messages) {
+        this.to = to;
+        this.messages = messages;
+    }
 }

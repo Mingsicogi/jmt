@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LineBotChatRepository extends JpaRepository<LineBotChat, Long> {
 
-    int removeByGroupId(String groupId);
+    int removeBySendTargetId(String sendTargetId);
 
-//    int deleteByGroupId(String groupId);
+    LineBotChat findBySendTargetId(String sendTargetId);
 }

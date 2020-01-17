@@ -7,8 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@PropertySource(value = {
-        "classpath:common.properties"
+@PropertySource(value = {"classpath:common.properties"
 })
 @EnableTransactionManagement
 @EnableScheduling
