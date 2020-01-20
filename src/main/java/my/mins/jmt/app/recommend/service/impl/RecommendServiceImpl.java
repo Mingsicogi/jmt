@@ -41,6 +41,6 @@ public class RecommendServiceImpl implements RecommendService {
 
 		foodInfoList.forEach(food -> foodInfoMessage.append(food.toString())); // get food info
 
-		allGroupList.forEach(group -> sendLineMessage.send(new MessageDTO(group.getSendTargetId(), foodInfoMessage.toString())));
+		allGroupList.forEach(group -> sendLineMessage.send(new MessageDTO.Plain(group.getSendTargetId(), foodInfoMessage.toString())));
 	}
 }

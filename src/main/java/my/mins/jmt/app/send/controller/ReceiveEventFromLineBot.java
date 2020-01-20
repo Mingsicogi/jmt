@@ -55,7 +55,7 @@ public class ReceiveEventFromLineBot {
 
         try {
             lineBotChatRepository.save(dbParam);
-            sendLineMessage.send(new MessageDTO(masterGroupId, prettyNotifyMessageContents("JOIN", dbParam)));
+            sendLineMessage.send(new MessageDTO.Plain(masterGroupId, prettyNotifyMessageContents("JOIN", dbParam)));
         } catch (DataIntegrityViolationException e) {
             log.warn("{}", e.getMessage(), e);
         }
@@ -80,9 +80,9 @@ public class ReceiveEventFromLineBot {
 
         if(dbParam != null) {
             lineBotChatRepository.removeBySendTargetId(dbParam.getSendTargetId());
-            sendLineMessage.send(new MessageDTO(masterGroupId, prettyNotifyMessageContents("LEAVE", dbParam)));
+            sendLineMessage.send(new MessageDTO.Plain(masterGroupId, prettyNotifyMessageContents("LEAVE", dbParam)));
         } else {
-            sendLineMessage.send(new MessageDTO(masterGroupId, "mins bot이 " + sendTargetId + "에서 나갔습니다. \nDB 저장된 매핑 정보가 없어 삭제된 정보가 없습니다."));
+            sendLineMessage.send(new MessageDTO.Plain(masterGroupId, "mins bot이 " + sendTargetId + "에서 나갔습니다. \nDB 저장된 매핑 정보가 없어 삭제된 정보가 없습니다."));
         }
 
 

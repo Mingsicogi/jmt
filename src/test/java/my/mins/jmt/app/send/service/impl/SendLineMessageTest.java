@@ -19,9 +19,9 @@ public class SendLineMessageTest {
 
     @Test
     public void send() {
-        MessageDTO message = new MessageDTO();
+        MessageDTO.Plain message = new MessageDTO.Plain();
 
-        message.setMessages("징아 뭐먹을라고오??!!!!");
+        message.setMessage("징아 뭐먹을라고오??!!!!");
         message.setTo("Cc8132e37b4f6d7eb457858802d3d9f45");
 
         Assert.assertTrue(sendLineMessage.send(message));

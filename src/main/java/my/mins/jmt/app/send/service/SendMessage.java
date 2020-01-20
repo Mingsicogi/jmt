@@ -1,8 +1,8 @@
 package my.mins.jmt.app.send.service;
 
-import my.mins.jmt.app.send.dto.MessageDTO;
+import my.mins.jmt.app.send.vo.MessageCommonVO;
 
 public interface SendMessage {
 
-	boolean send(MessageDTO message);
+	<T extends MessageCommonVO> boolean send(T message);
 }
