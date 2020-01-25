@@ -1,5 +1,7 @@
 package my.mins.jmt.app.recommend.service.impl;
 
+import com.linecorp.bot.model.message.FlexMessage;
+import com.linecorp.bot.model.message.flex.container.FlexContainer;
 import my.mins.jmt.app.common.cd.FoodTypeCd;
 import my.mins.jmt.app.food.entity.Food;
 import my.mins.jmt.app.food.service.impl.DiningCodeFoodInfo;
@@ -32,7 +34,7 @@ public class RecommendServiceImpl implements RecommendService {
 	 *
 	 * @throws IOException
 	 */
-	@Scheduled(cron = "0 20 12 * * *")
+	@Scheduled(cron = "0 25 12 * * *")
 	public void lunchRecommend() throws IOException {
 		List<LineBotChat> allGroupList = lineBotChatRepository.findAll();
 
@@ -42,5 +44,12 @@ public class RecommendServiceImpl implements RecommendService {
 		foodInfoList.forEach(food -> foodInfoMessage.append(food.toString())); // get food info
 
 		allGroupList.forEach(group -> sendLineMessage.send(new MessageDTO.Plain(group.getSendTargetId(), foodInfoMessage.toString())));
+	}
+
+	private FlexMessage convertMessageFromObject(String messageNotifyTitle, Food food) {
+		return FlexMessage.builder()
+				.altText(messageNotifyTitle)
+				.contents(new FlexContainer())
+				.build();
 	}
 }
