@@ -46,10 +46,10 @@ public class RecommendServiceImpl implements RecommendService {
 		allGroupList.forEach(group -> sendLineMessage.send(new MessageDTO.Plain(group.getSendTargetId(), foodInfoMessage.toString())));
 	}
 
-	private FlexMessage convertMessageFromObject(String messageNotifyTitle, Food food) {
-		return FlexMessage.builder()
-				.altText(messageNotifyTitle)
-				.contents(new FlexContainer())
-				.build();
-	}
+//	private FlexMessage convertMessageFromObject(String messageNotifyTitle, Food food) {
+//		return FlexMessage.builder()
+//				.altText(messageNotifyTitle)
+//				.contents(new FlexContainer())
+//				.build();
+//	}
 }
