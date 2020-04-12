@@ -21,6 +21,6 @@ public class SystemCheck {
     @DisguiseRequestParameter
     public ResponseEntity<String> annotationCheck(String message) {
         log.info("=== 위변조 끘! ===");
-        return ResponseEntity.ok(message);
+        return ResponseEntity.ok("전달 받은 스트링을 변조함 : " + message);
     }
 }

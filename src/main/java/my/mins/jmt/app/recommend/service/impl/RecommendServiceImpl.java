@@ -1,7 +1,5 @@
 package my.mins.jmt.app.recommend.service.impl;
 
-import com.linecorp.bot.model.message.FlexMessage;
-import com.linecorp.bot.model.message.flex.container.FlexContainer;
 import my.mins.jmt.app.common.cd.FoodTypeCd;
 import my.mins.jmt.app.food.entity.Food;
 import my.mins.jmt.app.food.service.impl.DiningCodeFoodInfo;
