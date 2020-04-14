@@ -14,7 +14,8 @@ public enum FoodTypeCd {
 	KOREA("한식"),
 	CHINA("중식"),
 	WESTERN("양식"),
-	JAPAN("일식")
+	JAPAN("일식"),
+	ETC("기타")
 	;
 
 	private String krNm;

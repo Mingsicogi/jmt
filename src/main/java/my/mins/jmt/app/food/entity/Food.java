@@ -4,11 +4,19 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import my.mins.jmt.app.common.cd.FoodTypeCd;
+import my.mins.jmt.app.review.entity.Review;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * 음식정보 관련 엔티티 정의
+ *
+ * @author 전민석
+ */
 @Entity
-@Table(name = "food")
+@Table
 @Getter
 @Setter
 @ToString
@@ -16,21 +24,14 @@ public class Food {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "food_id")
 	private Long id;
 
 	@Enumerated
-	@Column(name = "food_type_cd")
 	private FoodTypeCd foodTypeCd;
 
-	@Column(name = "store_nm")
-	private String storeNm;
+	private String name;
 
-	@Column(name = "food_example")
-	private String foodEx;
-
-	@Column(name = "avg_point")
-	private Integer avgPoint;
-
-	@Column(name = "store_addr")
-	private String storeAddr;
+	@OneToMany(mappedBy = "foodId", fetch = FetchType.LAZY)
+	private List<Review> reviews = new ArrayList<>();
 }
