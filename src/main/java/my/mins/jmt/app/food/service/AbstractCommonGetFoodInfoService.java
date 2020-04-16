@@ -29,11 +29,11 @@ public abstract class AbstractCommonGetFoodInfoService implements GetFoodInfo {
 
 			// set data into Food entity
 			Food food = new Food();
-			food.setStoreNm(this.getStoreNm(element));
-			food.setFoodTypeCd(foodTypeCd);
-			food.setFoodEx(this.getFoodEx(element));
-			food.setAvgPoint(this.getAvgPoint(element));
-			food.setStoreAddr(this.getStoreAddr(element));
+//			food.setStoreNm(this.getStoreNm(element));
+//			food.setFoodTypeCd(foodTypeCd);
+//			food.setFoodEx(this.getFoodEx(element));
+//			food.setAvgPoint(this.getAvgPoint(element));
+//			food.setStoreAddr(this.getStoreAddr(element));
 
 			foodInfoList.add(food);
 

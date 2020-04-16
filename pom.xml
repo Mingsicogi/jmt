@@ -101,6 +101,21 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>my.publish</groupId>
+                <artifactId>mins</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>confluence-dependency</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <scope>test</scope>
+                </configuration>
+            </plugin>
         </plugins>
 
         <resources>
