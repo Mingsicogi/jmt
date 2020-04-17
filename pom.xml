@@ -101,20 +101,22 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
             <plugin>
-                <groupId>my.publish</groupId>
-                <artifactId>mins</artifactId>
-                <version>1.0</version>
+                <groupId>io.codefountain.maven</groupId>
+                <artifactId>xmltojson-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
                 <executions>
                     <execution>
+                        <configuration>
+                            <sourceXmlFilePath>${project.basedir}/src/main/resources/data.xml</sourceXmlFilePath>
+                            <destinationJsonFilePath>${project.basedir}/src/main/resources/data.json</destinationJsonFilePath>
+                        </configuration>
                         <goals>
-                            <goal>confluence-dependency</goal>
+                            <goal>XmlToJson</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <scope>test</scope>
-                </configuration>
             </plugin>
         </plugins>
 
